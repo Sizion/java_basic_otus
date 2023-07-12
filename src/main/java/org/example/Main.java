@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        greetings();
+      /*  greetings();
 
         checkSign(13, 30, 23);
 
@@ -13,7 +13,7 @@ public class Main {
 
         compareNumbers();
 
-        addOrSubtractAndPrint(13, 23, true);
+        addOrSubtractAndPrint(13, 23, true);*/
 
 
         Scanner sc = new Scanner(System.in);
@@ -21,11 +21,31 @@ public class Main {
         while (i<1 || i>5){
             System.out.println("Введите число от 1 до 5");
             i = sc.nextInt();
+            switch (i){
+                case (1):
+                    greetings();
+                    break;
+                case (2):
+                    checkSign(13, 30, 23);
+                    break;
+                case (3):
+                    selectColor();
+                    break;
+                case(4):
+                    compareNumbers();
+                    break;
+                case(5):
+                    addOrSubtractAndPrint(13, 23, true);
+                    break;
+            }
+
+
         }
 
     }
 
     public static void greetings() {
+
 
         char[] chars = new String("Hello, World, from, Java").toCharArray();
 
@@ -47,9 +67,9 @@ public class Main {
         int data = 13;
         if (data <= 10) {
             System.out.println("Красный");
-        } else if (data > 10 && data <= 20) {
+        } else if (data <= 20) {
             System.out.println("Желтый");
-        } else if (data > 20) {
+        } else {
             System.out.println("Зеленый");
         }
 
