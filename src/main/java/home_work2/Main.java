@@ -49,11 +49,10 @@ public class Main {
         return sumAr;
     }
 
-    public static int[] sumArray(int[] a, int[] b) {
+    public static void sumArray(int[] a, int[] b) {
         for (int i = 0; i < b.length; i++) {
             a[i] = a[i] + b[i];
         }
-        return a;
     }
 
     /*Task 2 get exists dot*/
