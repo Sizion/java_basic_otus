@@ -1,7 +1,5 @@
 package home_work_3;
 
-import java.sql.SQLOutput;
-
 import static java.lang.Math.random;
 
 public class Main {
