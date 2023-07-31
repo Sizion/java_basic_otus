@@ -1,5 +1,7 @@
 package home_work3;
 
+import java.util.stream.Stream;
+
 import static java.lang.Math.random;
 
 public class Main {
@@ -121,6 +123,7 @@ public class Main {
     }
     public static int getRow(int[][] a) {
         int sumRow = 0;
+
         for (int i = 0; i < a.length; i++) {
             for (int j = 0; j < a[i].length; j++) {
                 if (i == 1) {
@@ -128,7 +131,9 @@ public class Main {
                 }
             }
         }
-        return sumRow;
+        /*Колонки как таковой нет, у нас массив массивов
+        Соотвестенно у некоторых массив может быть второй элемент, а у некотоных может  и не быть вторго элемента*/
+        return sumRow !=0 ? sumRow : -1;
     }
 
 }
