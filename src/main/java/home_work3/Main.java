@@ -1,4 +1,4 @@
-package home_work_3;
+package home_work3;
 
 import static java.lang.Math.random;
 
@@ -84,7 +84,7 @@ public class Main {
     public static void setZeroDiagonal(int[][] a) {
         for (int i = 0; i < a.length; i++) {
             for (int j = 0; j < a[i].length; j++) {
-                if (i == j ) {
+                if (i == j || j == a.length-1 -i ) {
                     a[i][j] = 0;
 
                 }
