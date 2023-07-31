@@ -1,5 +1,6 @@
 package home_work3;
 
+import static java.lang.Math.abs;
 import static java.lang.Math.random;
 
 public class Main {
