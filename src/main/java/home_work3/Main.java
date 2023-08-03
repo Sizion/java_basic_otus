@@ -65,7 +65,7 @@ public class Main {
         for (int i = 0; i < a.length; i++) {
             for (int j = 0; j < a[i].length; j++) {
                 if (a[i][j] > 0) {
-                    sum = sum + a[i][j];
+                    sum += a[i][j];
                 }
             }
         }
@@ -85,12 +85,9 @@ public class Main {
     /*Task 3*/
     public static void setZeroDiagonal(int[][] a) {
         for (int i = 0; i < a.length; i++) {
-            for (int j = 0; j < a[i].length; j++) {
-                if (i == j || j == a.length-1 -i ) {
-                    a[i][j] = 0;
+            a[i][i] = 0;
+            a[i][a.length - i - 1] = 0;
 
-                }
-            }
         }
     }
 
@@ -121,6 +118,7 @@ public class Main {
         }
         return sumColumn;
     }
+
     public static int getRow(int[][] a) {
         int sumRow = 0;
 
@@ -133,7 +131,7 @@ public class Main {
         }
         /*Колонки как таковой нет, у нас массив массивов
         Соотвестенно у некоторых массив может быть второй элемент, а у некотоных может  и не быть вторго элемента*/
-        return sumRow !=0 ? sumRow : -1;
+        return sumRow != 0 ? sumRow : -1;
     }
 
 }
