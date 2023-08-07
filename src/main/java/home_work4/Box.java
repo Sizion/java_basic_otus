@@ -5,18 +5,18 @@ public class Box {
     private final int height;
     private String colour;
     private boolean isOpen;
-    String object;
+    private String item;
 
     public void throwOutObject() {
         if (isOpen && isEmptyBox()) {
-            this.object = "";
+            this.item = null;
             System.out.println("throw object from box");
         } else System.out.println("Box is closed or box is empty");
     }
 
     public void putObject(String object) {
         if (isEmptyBox()) {
-            this.object = object;
+            this.item = object;
             System.out.println("Put object in box");
         } else System.out.println("Thx box is closed");
 
@@ -31,21 +31,21 @@ public class Box {
     }
 
     /* Constructor with set isOpen */
-    public Box(int weith, int hight, String colour, boolean isOpen, String object) {
-        this.width = weith;
+    public Box(int width, int hight, String colour, boolean isOpen, String item) {
+        this.width = width;
         this.height = hight;
         this.colour = colour;
         this.isOpen = isOpen;
-        this.object = object;
+        this.item = item;
     }
 
     /* Constructor with default isOpen - false */
-    public Box(int weith, int hight, String colour, String object) {
+    public Box(int weith, int hight, String colour, String item) {
         this.width = weith;
         this.height = hight;
         this.colour = colour;
         this.isOpen = false;
-        this.object = object;
+        this.item = item;
     }
 
     @Override
@@ -55,13 +55,13 @@ public class Box {
                 ", height=" + height +
                 ", colour='" + colour + '\'' +
                 ", isOpen=" + isOpen +
-                ", object='" + object + '\'' +
+                ", object='" + item + '\'' +
                 '}';
     }
 
     //Hate NullPointerException
     public boolean isEmptyBox() {
-        return object != null && !object.isEmpty();
+        return item != null && !item.isEmpty();
     }
 
 }
