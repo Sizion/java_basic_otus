@@ -108,11 +108,11 @@ public class Main {
 
     /*Task 5*/
     public static int getColumn(int[][] a) {
-        int sumColumn = 0;
+        int sumColumn = -1;
         for (int i = 0; i < a.length; i++) {
             for (int j = 0; j < a[i].length; j++) {
                 if (j == 1) {
-                    sumColumn = sumColumn + a[i][j];
+                    sumColumn += a[i][j];
                 }
             }
         }
@@ -120,18 +120,17 @@ public class Main {
     }
 
     public static int getRow(int[][] a) {
-        int sumRow = 0;
+        int sumRow = -1;
 
         for (int i = 0; i < a.length; i++) {
             for (int j = 0; j < a[i].length; j++) {
                 if (i == 1) {
-                    sumRow = sumRow + a[i][j];
+                    sumRow += a[i][j];
                 }
             }
         }
-        /*Колонки как таковой нет, у нас массив массивов
-        Соотвестенно у некоторых массив может быть второй элемент, а у некотоных может  и не быть вторго элемента*/
-        return sumRow != 0 ? sumRow : -1;
+
+        return a.length>2 ? sumRow : -1;
     }
 
 }
