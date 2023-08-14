@@ -13,6 +13,7 @@ public class Cat extends Animal {
         int needStaminaRun = 1;
         if (getStamina() >= distance * needStaminaRun) {
             stamina -= distance * needStaminaRun;
+            System.out.println(name + " пробежал(а) " + distance + " метров");
             return distance * speedRun;
         } else {
             System.out.println("У " + name + " появилась усталость");

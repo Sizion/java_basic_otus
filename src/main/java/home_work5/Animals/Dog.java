@@ -14,6 +14,7 @@ public class Dog extends Animal {
         int needStaminaRun = 1;
         if (getStamina() >= distance * needStaminaRun) {
             stamina = -distance * needStaminaRun;
+            System.out.println(name + " пробежал(а) " + distance + " метров");
             return distance * speedRun;
         } else {
             System.out.println("У" + name + "появилась усталость");
@@ -26,6 +27,7 @@ public class Dog extends Animal {
         int needStaminaSwim = 2;
         if (getStamina() > distance * needStaminaSwim) {
             stamina -= distance * needStaminaSwim;
+            System.out.println(name + " проплыл(а) " + distance + " метров");
             return distance * speedRun;
         } else {
             System.out.println("У" + name + "появилась усталость");
