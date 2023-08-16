@@ -21,14 +21,14 @@ public class Cat {
                 '}';
     }
 
-    public void eat(Plate plate){
+    public void eat(Plate plate) {
         /* Проверка на сытость не нужна, потому что котик всегда хочет жрааааааать*/
-        if ( plate.getCurrentMeal() >= appetite ){
+        if (plate.getCurrentMeal() >= appetite) {
             plate.reducMeal(appetite);
             satiety = true;
             System.out.println(name + " покушал");
-        }else{
-            System.out.println( "Кожаный мешок, живо положи еду котику " + name );
+        } else {
+            System.out.println("Кожаный мешок, живо положи еду котику " + name);
         }
     }
 }
