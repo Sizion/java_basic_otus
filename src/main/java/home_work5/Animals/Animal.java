@@ -1,7 +1,7 @@
 package home_work5.Animals;
 
 public abstract class Animal {
-    public String name;
+    String name;
     public int speedRun;
     public int speedSwim;
     public int stamina;
