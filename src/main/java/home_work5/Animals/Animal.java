@@ -2,9 +2,9 @@ package home_work5.Animals;
 
 public abstract class Animal {
     String name;
-    public int speedRun;
-    public int speedSwim;
-    public int stamina;
+    int speedRun;
+    int speedSwim;
+    int stamina;
 
     public int getStamina() {
         return stamina;
