@@ -13,7 +13,7 @@ public class MyList {
         return list;
     }
 
-    public static int getSumArray(List<Integer> list) {
+    public static int getSumArrayMoreFive(List<Integer> list) {
         int sum = 0;
 
         for (Integer i : list) {
@@ -26,15 +26,14 @@ public class MyList {
     }
 
     public static void setValueList(int value, List<Integer> list) {
-        for (Object o : list) {
-            o = value;
+        for (int i = 0; i < list.size(); i++) {
+            list.set(i, value);
         }
     }
 
     public static void increaseValueList(int value, List<Integer> list) {
-
-        for (Integer i : list) {
-            i+=i+value;
+        for (int i = 0; i < list.size(); i++) {
+            list.set(i, list.get(i) +value);
         }
     }
 
