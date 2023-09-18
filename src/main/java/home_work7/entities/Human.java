@@ -35,6 +35,14 @@ public class Human {
         }
     }
 
+    public void drive( Space space, int distance) {
+        if (currentTransport != null) {
+            currentTransport.drive(space, distance);
+        } else {
+            walk(distance);
+        }
+    }
+
     public void walk(int distance) {
         if (stamina >= walkStamina * distance) {
             stamina -= walkStamina * distance;

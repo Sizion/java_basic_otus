@@ -21,7 +21,7 @@ public class Main {
 
         human1.setCurrentTransport(null);
 
-        human1.drive(null, Space.PLAIN, 10);
+        human1.drive( Space.PLAIN, 10);
 
     }
 }
