@@ -26,8 +26,8 @@ public class PhoneBook {
         return phoneBook.get(fio);
     }
 
-    public void containsPhoneNumber(String phoneNumber) {
-        System.out.println(setPhoneNumbers.contains(phoneNumber) ? "Exists - " +  phoneNumber : "Not exits - " + phoneNumber);
+    public boolean containsPhoneNumber(String phoneNumber) {
+        return setPhoneNumbers.contains(phoneNumber);
     }
 
     @Override
