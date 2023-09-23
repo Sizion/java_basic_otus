@@ -3,7 +3,7 @@ package home_work7.phoneBook;
 import java.util.*;
 
 public class PhoneBook {
-    HashMap<String, List<String>> phoneBook = new HashMap<>();
+    private HashMap<String, List<String>> phoneBook = new HashMap<>();
 
     Set<String> setPhoneNumbers = new HashSet<>();
 
@@ -22,7 +22,7 @@ public class PhoneBook {
         }
     }
 
-    public List findUserNumbers(String fio) {
+    public List<String> findUserNumbers(String fio) {
         return phoneBook.get(fio);
     }
 
