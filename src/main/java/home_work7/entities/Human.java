@@ -8,7 +8,7 @@ public class Human {
     private int stamina = 25;
     private int walkStamina = 1;
 
-    Drive currentTransport;
+    private Drive currentTransport;
 
     public String getName() {
         return name;
@@ -35,7 +35,7 @@ public class Human {
         }
     }
 
-    public void drive( Space space, int distance) {
+    public void drive(Space space, int distance) {
         if (currentTransport != null) {
             currentTransport.drive(space, distance);
         } else {
@@ -43,10 +43,14 @@ public class Human {
         }
     }
 
-    public void walk(int distance) {
+    public boolean walk(int distance) {
         if (stamina >= walkStamina * distance) {
             stamina -= walkStamina * distance;
             System.out.println("Human has walked");
+            return true;
+        } else {
+            System.out.println("Human wanna rest and beers");
+            return false;
         }
     }
 }
