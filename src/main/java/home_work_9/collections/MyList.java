@@ -5,7 +5,7 @@ import java.util.List;
 
 public class MyList {
 
-    public static List getList(int min, int max) {
+    public static List<Integer> getList(int min, int max) {
         List<Integer> list = new ArrayList<>();
         for (int i = min; i <= max; i++) {
             list.add(i);
