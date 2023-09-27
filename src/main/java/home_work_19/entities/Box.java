@@ -7,6 +7,8 @@ public class Box<T extends Fruit> implements Comparable<Box> {
 
     private List<T> list = new ArrayList<>();
 
+    private int currentWeghtBox;
+
     @Override
     public String toString() {
         return "Box{" +
@@ -16,20 +18,20 @@ public class Box<T extends Fruit> implements Comparable<Box> {
 
     public void add(T fruit) {
         list.add(fruit);
+        currentWeghtBox +=fruit.getWeight();
     }
 
+    public int getCurrentWeghtBox() {
+        return currentWeghtBox;
+    }
 
-    public int getWeightBox() {
-        int weightBox = 0;
-        for (T t : list) {
-            weightBox += t.getWeight();
-        }
-        return weightBox;
+    public void setCurrentWeghtBox(int currentWeghtBox) {
+        this.currentWeghtBox = currentWeghtBox;
     }
 
     @Override
     public int compareTo(Box box) {
-        return Integer.compare(getWeightBox(), box.getWeightBox());
+        return Integer.compare(currentWeghtBox, currentWeghtBox);
     }
 
     public void moveToOtherBox(Box<T> box) {
@@ -37,6 +39,11 @@ public class Box<T extends Fruit> implements Comparable<Box> {
             box.add(t);
         }
         list.clear();
+        currentWeghtBox =0;
+    }
+
+    public boolean compareBox(Box box){
+        return this.currentWeghtBox >box.currentWeghtBox;
     }
 
 }
