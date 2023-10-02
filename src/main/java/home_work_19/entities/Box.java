@@ -31,7 +31,7 @@ public class Box<T extends Fruit> implements Comparable<Box> {
 
     @Override
     public int compareTo(Box box) {
-        return Integer.compare(currentWeghtBox, currentWeghtBox);
+        return Integer.compare(currentWeghtBox, box.currentWeghtBox);
     }
 
     public void moveToOtherBox(Box<T> box) {
