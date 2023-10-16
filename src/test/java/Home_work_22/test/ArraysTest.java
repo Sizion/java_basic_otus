@@ -1,4 +1,4 @@
-package Home_work_22.test;
+package home_work_22.test;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static home_work_22.Main.*;
+import static home_work_22.test.junit.Main.*;
 
 
 public class ArraysTest {

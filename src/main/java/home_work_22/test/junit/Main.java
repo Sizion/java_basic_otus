@@ -1,14 +1,12 @@
-package home_work_22;
+package home_work_22.test.junit;
 
 import java.util.Arrays;
 import java.util.Collections;
 
 public class Main {
     public static int[] getArrayAfterOne(int[] a) {
-
-        boolean existsOne = true;
-        for (int i = a.length - 1; i >= 0; i--) {
-            if (a[i] == 1 && i != a.length - 1) {
+        for (int i = a.length - 2; i >= 0; i--) {
+            if (a[i] == 1 ) {
                 return Arrays.copyOfRange(a, i + 1, a.length);
             }
         }
