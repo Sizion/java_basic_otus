@@ -1,74 +1,52 @@
-package org.example.server;
+package home_work_13.server;
 
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Arrays;
-import java.util.stream.Collectors;
 
 public class ServerApp {
-
     private static final int PORT = 8081;
-
+    private static final String HOST = "localhost";
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = new ServerSocket(PORT);
-        while (true) {
-            Socket socket = serverSocket.accept();
-            System.out.println("Client connected");
+        try (Socket socket = serverSocket.accept();
+        ) {
 
-            //Hello message
-            sendHello(socket);
+            try (DataInputStream in = new DataInputStream(socket.getInputStream());
+                 DataOutputStream out = new DataOutputStream(socket.getOutputStream());) {
 
-            parseOperator(socket);
 
-        }
-    }
+                out.writeUTF("Hello, im' calculate\r\nChose 2 numbers and operation * + - /");
+                out.writeUTF("Enter first value");
+                float val1 = in.readInt();
+                System.out.println("val1 = " + val1);
+                out.writeUTF("Enter second value");
+                float val2 = in.readInt();
+                System.out.println("val1 = " + val2);
+                out.writeUTF("Enter operation");
+                String operation = in.readUTF();
 
-    private static void readRequest(Socket socket) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        while (true) {
-            String str = reader.readLine();
-            System.out.println(str);
-            if (str == null || str.trim().isEmpty()) {
-                break;
+                switch (operation) {
+                    case ("+"):
+                        out.writeUTF("Result = " + (val1 + val2));
+                        break;
+                    case ("-"):
+                        out.writeUTF("Result = " + (val1 - val2));
+                        break;
+                    case ("*"):
+                        out.writeUTF("Result = " + (val1 * val2));
+                        break;
+                    case ("/"):
+                        out.writeUTF("Result = " + (val1 / val2));
+                        break;
+                    default:
+                        out.writeUTF("Incorrect operation");
+                        out.flush();
+                }
+
             }
         }
     }
 
-    private static void sendHello(Socket socket) throws IOException {
-        OutputStream out = socket.getOutputStream();
-        String str = "Hello\r\nYou need chose operator\r\n+ - * /\r\nAfter this chose 2 numbers+ \n";
-        out.write(str.getBytes());
-        out.flush();
-    }
-
-    private static void parseOperator(Socket socket) throws IOException {
-        System.out.println("Enter in parseOperator");
-        OutputStream out = socket.getOutputStream();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        String[] inputCalculate = reader.lines().collect(Collectors.joining()).split(" ");
-        System.out.println(Arrays.toString(inputCalculate));
-        int val1 = Integer.parseInt(inputCalculate[0]);
-        int val2 = Integer.parseInt(inputCalculate[1]);
-
-        switch (inputCalculate[2]) {
-            case ("+"):
-                out.write("3".getBytes());
-                break;
-            case ("-"):
-                out.write(("Резульат " + (val1 - val2)).getBytes());
-                break;
-            case ("/"):
-                out.write(("Резульат " + (val1 / val2)).getBytes());
-                break;
-            case ("*"):
-                out.write(("Резульат " + (val1 * val2)).getBytes());
-                break;
-            default:
-                out.write("Выберите корректный оператор".getBytes());
-        }
-        out.flush();
-
-    }
 
 }

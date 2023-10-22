@@ -2,38 +2,35 @@ package home_work_13.client;
 
 import java.io.*;
 import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.Scanner;
 
-public class Client implements AutoCloseable {
+public class Client {
+    private static final int PORT = 8081;
+    private static final String HOST = "localhost";
 
-    private DataInputStream in;
-    private DataOutputStream out;
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        try (Socket socket = new Socket(HOST, PORT);
+             DataInputStream in = new DataInputStream(socket.getInputStream());
+             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+        ) {
+            System.out.println(in.readUTF()); //Hello
+            System.out.println(in.readUTF()); //Enter first value
+            out.writeFloat(scanner.nextInt());
+            System.out.println(in.readUTF()); //Enter second value
+            out.writeFloat(scanner.nextInt());
+            System.out.println(in.readUTF() + " from server"); //Enter operation
 
-    public Client(InputStream in, OutputStream out) {
-        this.in = new DataInputStream(new BufferedInputStream(in));
-        this.out = new DataOutputStream(new BufferedOutputStream(out));
-    }
+            out.writeUTF(scanner.next());
+            System.out.println( in.readUTF());
 
-    public void sent(byte[] bytes) throws IOException {
-        out.write(bytes);
-        out.flush();
-    }
-
-    public void read(Socket socket) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        while (true) {
-
-            String str = reader.readLine();
-            System.out.println(str);
-            if (str == null || str.trim().isEmpty()) {
-                break;
-            }
+        } catch (UnknownHostException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        System.out.println("End message from server");
     }
 
-    @Override
-    public void close() throws Exception {
-        in.close();
-        out.close();
-    }
+
 }
