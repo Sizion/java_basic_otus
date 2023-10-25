@@ -12,6 +12,15 @@ public class Node {
                 '}';
     }
 
+    Node(int data) {
+        this.value = data;
+        this.leftChild = null;
+        this.rightChild = null;
+    }
+
+    Node() {
+    }
+
     public int getValue() {
         return value;
     }

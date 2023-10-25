@@ -5,13 +5,15 @@ import home_work11.SearchTree;
 import java.util.List;
 import java.util.Stack;
 
-public class Tree implements SearchTree {
+public class Tree<T extends Comparable<T>> implements SearchTree {
 
-    private Node rootNode;
+    public Node rootNode;
+    private T val;
 
     public Tree() {
         rootNode = null;
     }
+
 
     public void addValue(int value) {
         Node newNode = new Node();
@@ -40,6 +42,22 @@ public class Tree implements SearchTree {
                 }
             }
         }
+    }
+
+    public Node insertLevelOrder(int[] arr, int i) {
+        Node root = null;
+        // Base case for recursion
+        if (i < arr.length) {
+            root = new Node(arr[i]);
+
+            // insert left child
+            root.setLeftChild(insertLevelOrder(arr, 2 * i + 1));
+
+            // insert right child
+            root.setRightChild(insertLevelOrder(arr, 2 * i + 2));
+            ;
+        }
+        return root;
     }
 
     public void printTree() {
