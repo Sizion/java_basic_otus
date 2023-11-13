@@ -15,7 +15,7 @@ public class Tree<T extends Comparable<T>> implements SearchTree {
     }
 
 
-    public void addValue(int value) {
+    /*public void addValue(int value) {
         Node newNode = new Node();
         newNode.setValue(value);
         if (rootNode == null) {
@@ -42,6 +42,29 @@ public class Tree<T extends Comparable<T>> implements SearchTree {
                 }
             }
         }
+    }*/
+
+    public static Node convert(int[] keys, int low, int high, Node root)
+    {
+        // базовый вариант
+        if (low > high) {
+            return root;
+        }
+
+        // найти средний элемент текущего диапазона
+        int mid = (low + high) / 2;
+
+        // строим новый узел из среднего элемента и назначаем его корню
+        root = new Node(keys[mid]);
+
+        // левое поддерево корня будет состоять из ключей меньше среднего элемента
+        root.leftChild = convert(keys, low, mid - 1, root.leftChild);
+
+        // правое поддерево корня будет состоять из ключей больше, чем
+        // средний элемент
+        root.rightChild = convert(keys, mid + 1, high, root.rightChild);
+
+        return root;
     }
 
     public Node insertLevelOrder(int[] arr, int i) {
@@ -101,15 +124,14 @@ public class Tree<T extends Comparable<T>> implements SearchTree {
     @Override
     public Node find(int value) {
         Node currentNode = rootNode;
+
         while (currentNode.getValue() != value) {
-            if (value < currentNode.getValue()) {
+            if (value < currentNode.getValue())
                 currentNode = currentNode.getLeftChild();
-            } else {
+            else
                 currentNode = currentNode.getRightChild();
-            }
-            if (currentNode == null) {
+            if (currentNode == null)
                 return null;
-            }
         }
         return currentNode;
     }

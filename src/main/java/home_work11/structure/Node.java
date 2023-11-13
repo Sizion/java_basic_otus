@@ -2,8 +2,8 @@ package home_work11.structure;
 
 public class Node {
     private int value;
-    private Node leftChild;
-    private Node rightChild;
+    public Node leftChild;
+    public Node rightChild;
 
     @Override
     public String toString() {
